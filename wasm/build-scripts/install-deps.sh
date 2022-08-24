@@ -12,12 +12,12 @@ do
 done
 
 # Install missing dependencies
-if [ ${#cmds[@]} -ne 0 ];
-then
-  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    apt-get update
-    apt-get install -y ${cmds[@]}
-  else
-    brew install ${cmds[@]}
-  fi
-fi
+# if [ ${#cmds[@]} -ne 0 ];
+# then
+  # if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  #   apt-get update
+  #   apt-get install -y ${cmds[@]}
+  # else
+  #   brew install ${cmds[@]}
+  # fi
+# fi

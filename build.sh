@@ -41,13 +41,45 @@ run-all() {
   run ${SCRIPTS[@]}
 }
 
+
+run-lite() {
+  SCRIPTS=(
+    # install dependencies
+    install-deps
+		build-zlib
+		build-x264
+		build-x265
+		build-libvpx
+		build-wavpack
+		build-lame
+		build-fdk-aac
+		build-ogg
+		build-vorbis
+		build-theora
+		build-opus
+		configure-ffmpeg
+    build-ffmpeg
+  )
+  run ${SCRIPTS[@]}
+}
+
+run-ffmpeg() {
+  SCRIPTS=(
+		configure-ffmpeg
+    build-ffmpeg
+  )
+  run ${SCRIPTS[@]}
+}
+
 main() {
   # verify Emscripten version
   emcc -v
   if [[ "$@" == "" ]]; then
-    run-all
+    echo "---------------run-lite---------------"
+    run-lite
   else
-    run "$@"
+    echo "---------------run-$@---------------"
+    run-"$@"
   fi
 }
 
